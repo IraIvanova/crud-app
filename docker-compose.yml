@@ -1,0 +1,38 @@
+# For more information: https://laravel.com/docs/sail
+version: '3.8'
+services:
+
+  # php service
+  php-app:
+    container_name: php-app
+    build:
+      context: .
+      target: php
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8080:8080"
+    networks:
+        - mysql-net
+
+  db-app:
+    image: mysql:latest
+    container_name: db-app
+    hostname: db-app
+    restart: unless-stopped
+    ports:
+      - 33061:3306
+    environment:
+        MYSQL_ROOT_PASSWORD: rootPass1234_
+    volumes:
+      - db-app:/var/lib/mysql
+
+volumes:
+    db-app:
+        external: true
+
+networks:
+    mysql-net:
+        external: true
+        name: mysql-net
