@@ -7,7 +7,7 @@
 
 Clone the repository
 
-    git clone https://github.com/irina-ivanova-it/crud-app.git
+    git clone https://github.com/IraIvanova/crud-app.git
 
 Switch to the repo folder
 
