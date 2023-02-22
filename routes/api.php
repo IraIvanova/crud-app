@@ -23,22 +23,25 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
 });
 
 Route::get('companies', [CompanyController::class, 'index']);
+Route::get('companies/{id}/show', [CompanyController::class, 'show']);
+
 Route::get('projects', [ProjectController::class, 'index']);
+Route::get('projects/{id}/show', [ProjectController::class, 'show']);
+
+Route::get('users/{id}/show', [UserController::class, 'show']);
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('companies/store', [CompanyController::class, 'store']);
-    Route::get('companies/{id}/show', [CompanyController::class, 'show']);
     Route::put('companies/{id}/update', [CompanyController::class, 'update']);
     Route::delete('companies/{id}/destroy', [CompanyController::class, 'destroy']);
 
     Route::post('projects/store', [ProjectController::class, 'store']);
-    Route::get('projects/{id}/show', [ProjectController::class, 'show']);
     Route::put('projects/{id}/update', [ProjectController::class, 'update']);
     Route::delete('projects/{id}/destroy', [ProjectController::class, 'destroy']);
     Route::get('projects/{id}/get-users', [ProjectController::class, 'getUsers']);
 
     Route::get('users', [UserController::class, 'index']);
-    Route::get('users/{id}/show', [UserController::class, 'show']);
     Route::put('users/{id}/update', [UserController::class, 'update']);
     Route::delete('users/{id}/destroy', [UserController::class, 'destroy']);
 

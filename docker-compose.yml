@@ -13,8 +13,6 @@ services:
       - ./:/var/www
     ports:
       - "8080:8080"
-    networks:
-        - mysql-net
 
   db-app:
     image: mysql:latest
@@ -32,7 +30,3 @@ volumes:
     db-app:
         external: true
 
-networks:
-    mysql-net:
-        external: true
-        name: mysql-net
